@@ -2,8 +2,8 @@
 
 int main(int argc, char** argv)
 {
-  // create main window
-  sf::RenderWindow App(sf::VideoMode(800,600,32), "Hello World - SFML");
+  // create main window and prevent it from being resized
+  sf::RenderWindow App(sf::VideoMode(800,600,32), "Pong, by Jack Bowden", sf::Style::Close);
 
   // start main loop
   while(App.isOpen())
@@ -17,8 +17,8 @@ int main(int argc, char** argv)
         App.close();
     }
 
-    // clear screen and fill with blue
-    App.clear(sf::Color::Blue);
+    // clear screen and fill with black
+    App.clear(sf::Color::Black);
 
     // display
     App.display();
