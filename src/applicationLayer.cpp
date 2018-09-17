@@ -1,5 +1,8 @@
 #include <SFML/Graphics.hpp>
 
+#include "viewPlayer.h"
+#include "viewAI.h"
+
 int main(int argc, char** argv)
 {
   // create main window and prevent it from being resized
