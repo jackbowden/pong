@@ -7,13 +7,12 @@ class gameLogic
 {
     public:
         gameLogic();
-        void moveBall(gamePlayer* playerWindow, float delta);
+        void checkPaddleBoundaries();
+        int checkWallBoundaries();
 
     protected:
 
     private:
-        int ballLocX;
-        int ballLocY;
 };
 
 #endif // GAMELOGIC_H

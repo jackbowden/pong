@@ -22,11 +22,7 @@ int main(int argc, char** argv)
     gamePlayer* playerWindow = new gamePlayer();
     gameLogic* gameOperation = new gameLogic();
 
-
     playerWindow -> playerWindow.display();
-    playerWindow -> playerWindow.setFramerateLimit(60);
-
-
 
     while(playerWindow -> playerWindow.isOpen())
     {
@@ -42,18 +38,19 @@ int main(int argc, char** argv)
         }
 
         sf::Clock clock;
-        float delta = clock.getElapsedTime().asSeconds();
+        float delta = clock.getElapsedTime().asSeconds() * 100000;
         clock.restart();
 
-        gameOperation -> moveBall(playerWindow, delta);
+        playerWindow -> theGameBall -> moveBall(delta);
+        //gameOperation -> checkWallBoundaries();
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
-            playerWindow -> playerPaddle -> movePaddleUp();
+            playerWindow -> playerPaddle -> movePaddleUp(delta);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
-            playerWindow -> playerPaddle -> movePaddleDown();
+            playerWindow -> playerPaddle -> movePaddleDown(delta);
         }
 
         playerWindow -> updateView();

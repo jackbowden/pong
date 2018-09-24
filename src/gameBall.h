@@ -12,6 +12,8 @@ class gameBall
         sf::CircleShape objectBall;
 
         void updateView(sf::RenderWindow& window);
+        void moveBall(float delta);
+        void checkPaddleBoundaries();
 
     protected:
 
@@ -20,6 +22,9 @@ class gameBall
         float posY;
         float originX;
         float originY;
+        float ballAngle = 0.f;
+        float ballSpeed = 7.f;
+        float ballRadius = 7;
 };
 
 #endif // GAMEBALL_H

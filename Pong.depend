@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1537824536 source:c:\users\bowden\documents\gamedesign\pong\src\gameball.cpp
+	"gameBall.h"
+	<cmath>
+	<math.h>
+
+1537824527 c:\users\bowden\documents\gamedesign\pong\src\gameball.h
+	<SFML/Graphics.hpp>
+
+1537821365 source:c:\users\bowden\documents\gamedesign\pong\src\gamelogic.cpp
+	"gameLogic.h"
+	"gamePlayer.h"
+	<cmath>
+	<math.h>
+
+1537825328 c:\users\bowden\documents\gamedesign\pong\src\gamelogic.h
+	"gamePlayer.h"
+
+1537818848 c:\users\bowden\documents\gamedesign\pong\src\gameplayer.h
+	"gamePaddle.h"
+	"gameBall.h"
+	<SFML/Graphics.hpp>
+
+1537824818 c:\users\bowden\documents\gamedesign\pong\src\gamepaddle.h
+	<SFML/Graphics.hpp>
+	<string>
+
+1537823873 source:c:\users\bowden\documents\gamedesign\pong\src\gamepaddle.cpp
+	"gamePaddle.h"
+	<string>
+	<SFML/Graphics.hpp>
+
+1537821209 source:c:\users\bowden\documents\gamedesign\pong\src\gameplayer.cpp
+	<SFML/Graphics.hpp>
+	"gamePlayer.h"
+	"gamePaddle.h"
+	"gameBall.h"
+
+1537825580 source:c:\users\bowden\documents\gamedesign\pong\src\applicationlayer.cpp
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	"gameLogic.h"
+	"gamePlayer.h"
+	"gameBall.h"
+	"gamePaddle.h"
+	<cmath>
+	<math.h>
+	<iostream>
+

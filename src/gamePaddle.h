@@ -11,8 +11,8 @@ class gamePaddle
         gamePaddle(float x, float y, std::string color);
 
         void updateView(sf::RenderWindow& window);
-        void movePaddleUp();
-        void movePaddleDown();
+        void movePaddleUp(float delta);
+        void movePaddleDown(float delta);
 
         sf::RectangleShape Paddle;
 

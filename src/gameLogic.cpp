@@ -8,24 +8,19 @@ gameLogic::gameLogic()
     //ctor
 }
 
-void gameLogic::moveBall(gamePlayer* playerWindow, float delta)
+
+void gameLogic::checkPaddleBoundaries()
 {
-
-    float ballAngle = 90.f;
-    /*
-    do
-    {
-        // Make sure the ball initial angle is not too much vertical
-        ballAngle = (std::rand() % 360) * 2 * M_PI / 360;
-    }
-    while (std::abs(std::cos(ballAngle)) < 0.7f);
-    */
-    float ballSpeed = 900000.f;
-    //float factor = ballSpeed * delta;
-    //playerWindow->theGameBall->objectBall.move(std::cos(ballAngle) * factor, std::sin(ballAngle) * factor);
-
-
-    //sf::Clock clock;
-    //float deltaa = clock.getElapsedTime().asSeconds();
-    playerWindow->theGameBall->objectBall.move(delta * ballSpeed * std::cos(ballAngle), delta * ballSpeed * std::sin(ballAngle));
+    //fuck
 }
+
+/*
+int gameLogic::checkWallBoundaries()
+{
+    // Check collisions between the ball and the screen
+    if (gamePlayer->theGameBall->objectBall.getPosition().x - gamePlayer->theGameBall.objectBall.getRadius() < 0.f)
+    {
+            return 0;
+    }
+}
+*/

@@ -30,18 +30,18 @@ void gamePaddle::updateView(sf::RenderWindow& window)
     window.draw(Paddle);
 }
 
-void gamePaddle::movePaddleUp()
+void gamePaddle::movePaddleUp(float delta)
 {
     if (Paddle.getPosition().y > 50)
     {
-        Paddle.move(0,-10);
+        Paddle.move(0, delta * -10);
     }
 }
 
-void gamePaddle::movePaddleDown()
+void gamePaddle::movePaddleDown(float delta)
 {
     if (Paddle.getPosition().y < 550)
     {
-        Paddle.move(0,10);
+        Paddle.move(0,delta * 10);
     }
 }
