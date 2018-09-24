@@ -13,7 +13,7 @@ class gameBall
 
         void updateView(sf::RenderWindow& window);
         void moveBall(float delta);
-        void checkPaddleBoundaries();
+        void invertBallAngle();
 
     protected:
 
@@ -22,7 +22,7 @@ class gameBall
         float posY;
         float originX;
         float originY;
-        float ballAngle = 0.f;
+        float ballAngle = 180;
         float ballSpeed = 7.f;
         float ballRadius = 7;
 };

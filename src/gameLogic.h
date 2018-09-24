@@ -7,8 +7,8 @@ class gameLogic
 {
     public:
         gameLogic();
-        void checkPaddleBoundaries();
-        int checkWallBoundaries();
+        void checkPaddleBoundaries(gamePlayer* playerWindow);
+        int checkWallBoundaries(gamePlayer* playerWindow);
 
     protected:
 

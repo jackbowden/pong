@@ -42,7 +42,7 @@ int main(int argc, char** argv)
         clock.restart();
 
         playerWindow -> theGameBall -> moveBall(delta);
-        //gameOperation -> checkWallBoundaries();
+        gameOperation -> checkWallBoundaries(playerWindow);
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
