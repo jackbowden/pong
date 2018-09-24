@@ -15,7 +15,9 @@ class gamePlayer
 
         gamePaddle* playerPaddle;
         gamePaddle* aiPaddle;
-        gameBall* thegameBall;
+        gameBall* theGameBall;
+        
+        
 
     protected:
 
@@ -26,11 +28,12 @@ class gamePlayer
         float aiLocX = 75;
         float aiLocY = 600;
 
-        float ballLocX = 200;
-        float ballLocY = 600;
+        float ballLocX = 400;
+        float ballLocY = 300;
 
-        float ballOriginX = 400;
-        float ballOriginY = 600;
+        float ballOriginX = 7 / 2;
+        float ballOriginY = 7 / 2;
+
 
 };
 

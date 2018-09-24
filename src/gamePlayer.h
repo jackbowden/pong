@@ -17,6 +17,7 @@ class gamePlayer
         gamePaddle* aiPaddle;
         gameBall* theGameBall;
 
+
     protected:
 
     private:
@@ -31,6 +32,7 @@ class gamePlayer
 
         float ballOriginX = 7 / 2;
         float ballOriginY = 7 / 2;
+
 
 };
 
