@@ -1,18 +1,28 @@
 #ifndef GAMEPLAYER_H
 #define GAMEPLAYER_H
 
-#include "SFML/Graphics.hpp"
+#include "gamePaddle.h"
 
-class gamePlayer : public applicationLayer
+#include <SFML/Graphics.hpp>
+
+class gamePlayer
 {
     public:
+        sf::RenderWindow playerWindow;
         gamePlayer();
+        void updateView();
 
-        //sf::RenderWindow playerWindow;
+        gamePaddle* playerPaddle;
+        gamePaddle* aiPaddle;
 
     protected:
 
     private:
+        float playerLocX = 770;
+        float playerLocY = 600;
+
+        float aiLocX = 10;
+        float aiLocY = 600;
 };
 
 #endif // GAMEPLAYER_H

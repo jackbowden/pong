@@ -1,38 +1,20 @@
+#include <SFML/Graphics.hpp>
 #include "gamePlayer.h"
+#include "gamePaddle.h"
 
 gamePlayer::gamePlayer() : playerWindow(sf::VideoMode(800,600,32), "Pong, by Jack Bowden", sf::Style::Close) //width by height
 {
-    //ctor
+    
+    
+    playerPaddle = new gamePaddle(playerLocX, playerLocY, "Green");
+    aiPaddle = new gamePaddle(aiLocX, aiLocY, "Yellow");
+    //gameBall = new gameBall(ballLocX, ballOriginX, ballOriginY);
 }
 
 void gamePlayer::updateView() //refreshes screen with new content
 {
     playerWindow.clear(sf::Color::Black);
+    playerPaddle -> updateView(playerWindow);
+    aiPaddle -> updateView(playerWindow);
     playerWindow.display();
 }
-
-
-    // start main loop
-    while(App.isOpen())
-    {
-        // process events
-        sf::Event Event;
-        while(App.pollEvent(Event))
-        {
-          // Exit
-          // this is my shutdown
-
-          //need to start looping to accept input here i suppose
-
-
-          if(Event.type == sf::Event::Closed)
-            App.close();
-        }
-
-        // clear screen and fill with black
-        App.
-
-        // display
-        App.display();
-    }
-
