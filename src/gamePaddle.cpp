@@ -11,7 +11,6 @@ gamePaddle::gamePaddle(float x, float y, std::string color)
     Paddle.setOrigin(paddleSize / 2.f);
     Paddle.setPosition(x, y / 2);
 
-
     if (color == "Green")
     {
         Paddle.setFillColor(sf::Color::Green);
@@ -19,6 +18,10 @@ gamePaddle::gamePaddle(float x, float y, std::string color)
     else if (color == "Yellow")
     {
         Paddle.setFillColor(sf::Color::Yellow);
+    }
+    else
+    {
+        Paddle.setFillColor(sf::Color::White);
     }
 }
 

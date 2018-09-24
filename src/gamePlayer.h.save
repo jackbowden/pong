@@ -2,6 +2,7 @@
 #define GAMEPLAYER_H
 
 #include "gamePaddle.h"
+#include "gameBall.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -14,15 +15,23 @@ class gamePlayer
 
         gamePaddle* playerPaddle;
         gamePaddle* aiPaddle;
+        gameBall* thegameBall;
 
     protected:
 
     private:
-        float playerLocX = 770;
+        float playerLocX = 725;
         float playerLocY = 600;
 
-        float aiLocX = 10;
+        float aiLocX = 75;
         float aiLocY = 600;
+
+        float ballLocX = 200;
+        float ballLocY = 600;
+
+        float ballOriginX = 400;
+        float ballOriginY = 600;
+
 };
 
 #endif // GAMEPLAYER_H

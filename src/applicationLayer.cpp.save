@@ -1,14 +1,10 @@
 #include <SFML/Graphics.hpp>
 
-/*
-#include "menuStart.h"
+//#include "menuStart.h"
 #include "gameLogic.h"
-*/
 #include "gamePlayer.h"
-/*
-#include "gameAI.h"
+//#include "gameAI.h"
 #include "gameBall.h"
-*/
 #include "gamePaddle.h"
 /*
 #include "menuFinish.h"
@@ -24,9 +20,7 @@ int main(int argc, char** argv)
 
     // process events
     sf::Event Event;
-
-    //add ai and logic here
-
+    
     playerWindow -> playerWindow.display();
 
     while(playerWindow -> playerWindow.isOpen())
@@ -41,10 +35,14 @@ int main(int argc, char** argv)
 
         }
         playerWindow -> playerWindow.setFramerateLimit(60);
-        
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
-            playerWindow -> playerPaddle
+            playerWindow -> playerPaddle -> movePaddleUp();
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {
+            playerWindow -> playerPaddle -> movePaddleDown();
         }
 
         playerWindow -> updateView();
