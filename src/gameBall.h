@@ -14,15 +14,16 @@ class gameBall
         void updateView(sf::RenderWindow& window);
         void moveBall(float delta);
         void invertBallAngle();
+        void resetBall();
 
     protected:
 
     private:
         float posX;
         float posY;
-        float originX;
-        float originY;
-        float ballAngle = 180;
+        float originX = 400;
+        float originY = 300;
+        float ballAngle = 209;
         float ballSpeed = 7.f;
         float ballRadius = 7;
 };

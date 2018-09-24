@@ -13,6 +13,8 @@ class gameLogic
     protected:
 
     private:
+        int playerScore = 0;
+        int enemyScore = 0;
 };
 
 #endif // GAMELOGIC_H

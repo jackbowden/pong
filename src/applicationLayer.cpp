@@ -37,23 +37,26 @@ int main(int argc, char** argv)
 
         }
 
-        sf::Clock clock;
-        float delta = clock.getElapsedTime().asSeconds() * 100000;
-        clock.restart();
-
-        playerWindow -> theGameBall -> moveBall(delta);
-        gameOperation -> checkWallBoundaries(playerWindow);
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        while(true)
         {
-            playerWindow -> playerPaddle -> movePaddleUp(delta);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        {
-            playerWindow -> playerPaddle -> movePaddleDown(delta);
-        }
+            sf::Clock clock;
+            float delta = clock.getElapsedTime().asSeconds() * 100000;
+            clock.restart();
 
-        playerWindow -> updateView();
+            playerWindow -> theGameBall -> moveBall(delta);
+            gameOperation -> checkWallBoundaries(playerWindow);
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            {
+                playerWindow -> playerPaddle -> movePaddleUp(delta);
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+            {
+                playerWindow -> playerPaddle -> movePaddleDown(delta);
+            }
+
+            playerWindow -> updateView();
+        }
     }
 
   // Done.

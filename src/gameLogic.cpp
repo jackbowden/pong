@@ -5,7 +5,7 @@
 
 gameLogic::gameLogic()
 {
-    //ctor
+
 }
 
 
@@ -16,22 +16,18 @@ void gameLogic::checkPaddleBoundaries(gamePlayer* playerWindow)
 
 int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
 {
-    int gameHeight = 800;
-    int gameWidth = 600;
-    printf("HEY");
-    // Check collisions between the ball and the screen
-    // gamePlayer->theGameBall->objectBall.getPosition().x - gamePlayer->theGameBall.objectBall.getRadius() < 0.f
+    int gameHeight = 600;
+    int gameWidth = 800;
     if (playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() < 0.f)
     {
-        printf("hey1");
-
+        playerScore += 1;
+        playerWindow ->theGameBall->resetBall();
     }
-    if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > 550) //800 = game width
+    if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > 800) //800 = game width
     {
-        printf("HEY2");
+        enemyScore += 1;
+        playerWindow ->theGameBall->resetBall();
     }
-
-    //! YES THIS WORKS
     if (playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() < 0.f)
     {
         playerWindow->theGameBall->invertBallAngle();
@@ -40,6 +36,6 @@ int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
     if (playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() > gameHeight)
     {
         playerWindow->theGameBall->invertBallAngle();
-        playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, playerWindow->theGameBall->objectBall.getRadius() - 0.1f);
+        playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, gameHeight - playerWindow->theGameBall->objectBall.getRadius() - 0.1f);
     }
 }

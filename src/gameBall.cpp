@@ -18,6 +18,11 @@ void gameBall::updateView(sf::RenderWindow& window)
     window.draw(objectBall);
 }
 
+void gameBall::resetBall()
+{
+    objectBall.setPosition(originX, originY);
+}
+
 void gameBall::invertBallAngle()
 {
     ballAngle = -ballAngle;
