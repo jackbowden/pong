@@ -1,0 +1,18 @@
+#ifndef GAMEPLAYER_H
+#define GAMEPLAYER_H
+
+#include "SFML/Graphics.hpp"
+
+class gamePlayer : public applicationLayer
+{
+    public:
+        gamePlayer();
+
+        //sf::RenderWindow playerWindow;
+
+    protected:
+
+    private:
+};
+
+#endif // GAMEPLAYER_H

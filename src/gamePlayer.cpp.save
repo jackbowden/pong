@@ -1,0 +1,38 @@
+#include "gamePlayer.h"
+
+gamePlayer::gamePlayer() : playerWindow(sf::VideoMode(800,600,32), "Pong, by Jack Bowden", sf::Style::Close) //width by height
+{
+    //ctor
+}
+
+void gamePlayer::updateView() //refreshes screen with new content
+{
+    playerWindow.clear(sf::Color::Black);
+    playerWindow.display();
+}
+
+
+    // start main loop
+    while(App.isOpen())
+    {
+        // process events
+        sf::Event Event;
+        while(App.pollEvent(Event))
+        {
+          // Exit
+          // this is my shutdown
+
+          //need to start looping to accept input here i suppose
+
+
+          if(Event.type == sf::Event::Closed)
+            App.close();
+        }
+
+        // clear screen and fill with black
+        App.
+
+        // display
+        App.display();
+    }
+
