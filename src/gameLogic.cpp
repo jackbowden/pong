@@ -2,6 +2,7 @@
 #include "gamePlayer.h"
 #include <math.h>
 #include <cmath>
+#include <iostream>
 #define M_PI 3.14159265358979323846264338327
 
 
@@ -47,21 +48,25 @@ int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
     if (playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() < 0.f)
     {
         playerScore += 1;
+        playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
         playerWindow ->theGameBall->resetBall();
     }
     if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > 800) //800 = game width
     {
         enemyScore += 1;
+        playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
         playerWindow ->theGameBall->resetBall();
     }
-    if (playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() < 0.f)
+    if (playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() < 0.f) //if it hits the top
     {
         playerWindow->theGameBall->invertBallAngle();
+        playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + (std::rand() % 5 + -5));
         playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, playerWindow->theGameBall->objectBall.getRadius() + 0.1f);
     }
-    if (playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() > gameHeight)
+    if (playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() > gameHeight) //if it hits the bottom
     {
         playerWindow->theGameBall->invertBallAngle();
+        playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + (std::rand() % 5 + -5));
         playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, gameHeight - playerWindow->theGameBall->objectBall.getRadius() - 0.1f);
     }
 }

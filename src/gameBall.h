@@ -17,6 +17,7 @@ class gameBall
         void resetBall();
         float getBallAngle();
         float setBallAngle(float newBallAngle);
+        void spawnBall();
 
     protected:
 
@@ -26,7 +27,7 @@ class gameBall
         float originX = 400;
         float originY = 300;
         float ballAngle = 0.f;
-        float ballSpeed = 7.f;
+        float ballSpeed = 10.f;
         float ballRadius = 7;
 };
 
