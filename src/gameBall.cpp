@@ -28,6 +28,16 @@ void gameBall::invertBallAngle()
     ballAngle = -ballAngle;
 }
 
+float gameBall::getBallAngle()
+{
+    return ballAngle;
+}
+
+float gameBall::setBallAngle(float newBallAngle)
+{
+    ballAngle = newBallAngle;
+}
+
 void gameBall::moveBall(float delta)
 {
     /*

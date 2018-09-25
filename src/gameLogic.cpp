@@ -1,7 +1,9 @@
 #include "gameLogic.h"
 #include "gamePlayer.h"
-#include <cmath>
 #include <math.h>
+#include <cmath>
+#define M_PI 3.14159265358979323846264338327
+
 
 gameLogic::gameLogic()
 {
@@ -11,7 +13,31 @@ gameLogic::gameLogic()
 
 void gameLogic::checkPaddleBoundaries(gamePlayer* playerWindow)
 {
-    //fuck
+    if (playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() < playerWindow->aiPaddle->Paddle.getPosition().x + playerWindow->aiPaddle->Paddle.getSize().x / 2 &&
+        playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() > playerWindow->aiPaddle->Paddle.getPosition().x &&
+        playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() >= playerWindow->aiPaddle->Paddle.getPosition().y - playerWindow->aiPaddle->Paddle.getSize().y / 2 &&
+        playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() <= playerWindow->aiPaddle->Paddle.getPosition().y + playerWindow->aiPaddle->Paddle.getSize().y / 2)
+    {
+        if (playerWindow->theGameBall->objectBall.getPosition().y > playerWindow->aiPaddle->Paddle.getPosition().y)
+            playerWindow->theGameBall->setBallAngle(M_PI - playerWindow->theGameBall->getBallAngle() + (std::rand() % 20) * M_PI / 180);
+        else
+            playerWindow->theGameBall->setBallAngle(M_PI - playerWindow->theGameBall->getBallAngle() - (std::rand() % 20) * M_PI / 180);
+
+        playerWindow->theGameBall->objectBall.setPosition(playerWindow->aiPaddle->Paddle.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() + playerWindow->aiPaddle->Paddle.getSize().x / 2 + 0.1f, playerWindow->theGameBall->objectBall.getPosition().y);
+    }
+
+    if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > playerWindow->playerPaddle->Paddle.getPosition().x - playerWindow->playerPaddle->Paddle.getSize().x / 2 &&
+        playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() < playerWindow->playerPaddle->Paddle.getPosition().x &&
+        playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() >= playerWindow->playerPaddle->Paddle.getPosition().y - playerWindow->aiPaddle->Paddle.getSize().y / 2 &&
+        playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() <= playerWindow->playerPaddle->Paddle.getPosition().y + playerWindow->aiPaddle->Paddle.getSize().y / 2)
+    {
+        if (playerWindow->theGameBall->objectBall.getPosition().y > playerWindow->playerPaddle->Paddle.getPosition().y)
+            playerWindow->theGameBall->setBallAngle(M_PI - playerWindow->theGameBall->getBallAngle() + (std::rand() % 20) * M_PI / 180);
+        else
+            playerWindow->theGameBall->setBallAngle(M_PI - playerWindow->theGameBall->getBallAngle() - (std::rand() % 20) * M_PI / 180);
+
+        playerWindow->theGameBall->objectBall.setPosition(playerWindow->playerPaddle->Paddle.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() - playerWindow->aiPaddle->Paddle.getSize().x / 2 - 0.1f, playerWindow->theGameBall->objectBall.getPosition().y);
+    }
 }
 
 int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)

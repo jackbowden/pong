@@ -15,6 +15,8 @@ class gameBall
         void moveBall(float delta);
         void invertBallAngle();
         void resetBall();
+        float getBallAngle();
+        float setBallAngle(float newBallAngle);
 
     protected:
 
@@ -23,7 +25,7 @@ class gameBall
         float posY;
         float originX = 400;
         float originY = 300;
-        float ballAngle = 209;
+        float ballAngle = 0.f;
         float ballSpeed = 7.f;
         float ballRadius = 7;
 };
