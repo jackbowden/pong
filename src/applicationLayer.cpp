@@ -19,6 +19,7 @@ int main(int argc, char** argv)
 {
 
     gamePlayer* playerWindow = new gamePlayer();
+    gameAI* aiOperation= new gameAI();
     gameLogic* gameOperation = new gameLogic();
 
     playerWindow -> playerWindow.display();
@@ -42,6 +43,7 @@ int main(int argc, char** argv)
         playerWindow -> theGameBall -> moveBall(delta);
         gameOperation -> checkWallBoundaries(playerWindow);
         gameOperation -> checkPaddleBoundaries(playerWindow);
+        aiOperation -> movePaddle(playerWindow, delta);
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
