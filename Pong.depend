@@ -4,10 +4,10 @@
 	<cmath>
 	<math.h>
 
-1537841418 c:\users\bowden\documents\gamedesign\pong\src\gameball.h
+1537852339 c:\users\bowden\documents\gamedesign\pong\src\gameball.h
 	<SFML/Graphics.hpp>
 
-1537843866 source:c:\users\bowden\documents\gamedesign\pong\src\gamelogic.cpp
+1537852242 source:c:\users\bowden\documents\gamedesign\pong\src\gamelogic.cpp
 	"gameLogic.h"
 	"gamePlayer.h"
 	<math.h>
@@ -37,14 +37,20 @@
 	"gamePaddle.h"
 	"gameBall.h"
 
-1537841160 source:c:\users\bowden\documents\gamedesign\pong\src\applicationlayer.cpp
+1537845085 source:c:\users\bowden\documents\gamedesign\pong\src\applicationlayer.cpp
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	"gameLogic.h"
 	"gamePlayer.h"
+	"gameAI.h"
 	"gameBall.h"
 	"gamePaddle.h"
 	<cmath>
 	<math.h>
 	<iostream>
+
+1537845049 c:\users\bowden\documents\gamedesign\pong\src\gameai.h
+
+1537845049 source:c:\users\bowden\documents\gamedesign\pong\src\gameai.cpp
+	"gameAI.h"
 

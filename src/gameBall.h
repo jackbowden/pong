@@ -26,7 +26,7 @@ class gameBall
         float posY;
         float originX = 400;
         float originY = 300;
-        float ballAngle = 0.f;
+        float ballAngle = 0.785;
         float ballSpeed = 10.f;
         float ballRadius = 7;
 };

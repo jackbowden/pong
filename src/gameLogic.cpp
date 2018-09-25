@@ -59,14 +59,16 @@ int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
     }
     if (playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() < 0.f) //if it hits the top
     {
+        std::cout << playerWindow->theGameBall->getBallAngle() << std::endl;
         playerWindow->theGameBall->invertBallAngle();
-        playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + (std::rand() % 5 + -5));
+        playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + 0.10 * (std::rand() % 5 + -5));
         playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, playerWindow->theGameBall->objectBall.getRadius() + 0.1f);
+        std::cout << playerWindow->theGameBall->getBallAngle() << std::endl;
     }
     if (playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() > gameHeight) //if it hits the bottom
     {
         playerWindow->theGameBall->invertBallAngle();
-        playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + (std::rand() % 5 + -5));
+        playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + 0.10 * (std::rand() % 5 + -5));
         playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, gameHeight - playerWindow->theGameBall->objectBall.getRadius() - 0.1f);
     }
 }
