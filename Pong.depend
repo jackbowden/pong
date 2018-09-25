@@ -37,7 +37,7 @@
 	"gamePaddle.h"
 	"gameBall.h"
 
-1537854053 source:c:\users\bowden\documents\gamedesign\pong\src\applicationlayer.cpp
+1537894821 source:c:\users\bowden\documents\gamedesign\pong\src\applicationlayer.cpp
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	"gameLogic.h"
@@ -49,9 +49,11 @@
 	<math.h>
 	<iostream>
 
-1537854456 c:\users\bowden\documents\gamedesign\pong\src\gameai.h
+1537895058 c:\users\bowden\documents\gamedesign\pong\src\gameai.h
 	"gamePlayer.h"
 
-1537845049 source:c:\users\bowden\documents\gamedesign\pong\src\gameai.cpp
+1537895244 source:c:\users\bowden\documents\gamedesign\pong\src\gameai.cpp
 	"gameAI.h"
+	"gamePlayer.h"
+	<SFML/System.hpp>
 
