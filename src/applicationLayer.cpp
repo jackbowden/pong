@@ -56,7 +56,8 @@ int main(int argc, char** argv)
         }
 
         playerWindow -> updateView();
-    }
+        gameOperation -> updateView();
+    };
 
   // Done.
   return 0;

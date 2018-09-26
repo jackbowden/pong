@@ -3,18 +3,13 @@
 #include "gamePaddle.h"
 #include "gameBall.h"
 #include "gameLogic.h"
+#include <iostream>
 
 gamePlayer::gamePlayer() : playerWindow(sf::VideoMode(800,600,32), "Pong, by Jack Bowden", sf::Style::Close) //width by height
 {
     playerPaddle = new gamePaddle(playerLocX, playerLocY, "Green");
     aiPaddle = new gamePaddle(aiLocX, aiLocY, "Yellow");
     theGameBall = new gameBall(ballLocX, ballLocY, ballOriginX, ballOriginY);
-}
-
-void gamePlayer::drawScore()
-{
-    printf(gameLogic().getPlayerScore())
-
 }
 
 void gamePlayer::updateView() //refreshes screen with new content
@@ -24,7 +19,6 @@ void gamePlayer::updateView() //refreshes screen with new content
     playerPaddle -> updateView(playerWindow);
     aiPaddle -> updateView(playerWindow);
     theGameBall -> updateView(playerWindow);
-    drawScore();
 
     playerWindow.display();
 }

@@ -11,6 +11,7 @@ class gameLogic
         int checkWallBoundaries(gamePlayer* playerWindow);
         int getPlayerScore();
         int getEnemyScore();
+        void updateView();
 
     protected:
 

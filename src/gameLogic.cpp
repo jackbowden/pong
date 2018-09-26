@@ -84,3 +84,7 @@ int gameLogic::getEnemyScore()
     return enemyScore;
 }
 
+void gameLogic::updateView()
+{
+    std::cout << enemyScore << std::endl << playerScore;
+}

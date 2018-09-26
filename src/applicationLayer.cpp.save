@@ -43,7 +43,6 @@ int main(int argc, char** argv)
         playerWindow -> theGameBall -> moveBall(delta);
         gameOperation -> checkWallBoundaries(playerWindow);
         gameOperation -> checkPaddleBoundaries(playerWindow);
-        gameOperation -> d
 
         aiOperation -> movePaddle(playerWindow, delta);
 
@@ -57,7 +56,8 @@ int main(int argc, char** argv)
         }
 
         playerWindow -> updateView();
-    }
+        gameOperation -> updateView(p);
+    };
 
   // Done.
   return 0;
