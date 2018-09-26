@@ -49,22 +49,22 @@ int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
     if (playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() < 0.f)
     {
         enemyScore += 1;
+        playerWindow ->setScore(2);
         playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
         playerWindow ->theGameBall->resetBall();
     }
     if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > 800) //800 = game width
     {
         playerScore += 1;
+        playerWindow ->setScore(1);
         playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
         playerWindow ->theGameBall->resetBall();
     }
     if (playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() < 0.f) //if it hits the top
     {
-        std::cout << playerWindow->theGameBall->getBallAngle() << std::endl;
         playerWindow->theGameBall->invertBallAngle();
         playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + 0.10 * (std::rand() % 5 + -5));
         playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, playerWindow->theGameBall->objectBall.getRadius() + 0.1f);
-        std::cout << playerWindow->theGameBall->getBallAngle() << std::endl;
     }
     if (playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() > gameHeight) //if it hits the bottom
     {
@@ -82,9 +82,4 @@ int gameLogic::getPlayerScore()
 int gameLogic::getEnemyScore()
 {
     return enemyScore;
-}
-
-void gameLogic::updateView()
-{
-    std::cout << enemyScore << std::endl << playerScore;
 }

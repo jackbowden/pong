@@ -1,6 +1,5 @@
 #ifndef GAMEPLAYER_H
 #define GAMEPLAYER_H
-
 #include "gamePaddle.h"
 #include "gameBall.h"
 
@@ -12,13 +11,12 @@ class gamePlayer
         sf::RenderWindow playerWindow;
         gamePlayer();
         void updateView();
-        void drawScore();
+        void paintScore(sf::RenderWindow& window);
+        void setScore(int player);
 
         gamePaddle* playerPaddle;
         gamePaddle* aiPaddle;
         gameBall* theGameBall;
-
-
 
     protected:
 
@@ -35,6 +33,8 @@ class gamePlayer
         float ballOriginX = 7 / 2;
         float ballOriginY = 7 / 2;
 
+        int playerScore = 0;
+        int enemyScore = 0;
 
 };
 

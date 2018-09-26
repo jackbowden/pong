@@ -17,10 +17,9 @@
 
 int main(int argc, char** argv)
 {
-
-    gamePlayer* playerWindow = new gamePlayer();
     gameAI* aiOperation = new gameAI();
     gameLogic* gameOperation = new gameLogic();
+    gamePlayer* playerWindow = new gamePlayer();
 
     playerWindow -> playerWindow.display();
 
@@ -56,7 +55,6 @@ int main(int argc, char** argv)
         }
 
         playerWindow -> updateView();
-        gameOperation -> updateView();
     };
 
   // Done.
