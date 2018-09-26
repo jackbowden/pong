@@ -48,15 +48,15 @@ int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
     int gameWidth = 800;
     if (playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() < 0.f)
     {
-        enemyScore += 1;
-        playerWindow ->setScore(2);
+        playerScore += 1;
+        playerWindow ->setScore(1);
         playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
         playerWindow ->theGameBall->resetBall();
     }
     if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > 800) //800 = game width
     {
-        playerScore += 1;
-        playerWindow ->setScore(1);
+        enemyScore += 1;
+        playerWindow ->setScore(2);
         playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
         playerWindow ->theGameBall->resetBall();
     }

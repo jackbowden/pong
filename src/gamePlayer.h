@@ -13,6 +13,11 @@ class gamePlayer
         void updateView();
         void paintScore(sf::RenderWindow& window);
         void setScore(int player);
+        int isGameOver();
+        int isGameNew();
+        int setGameState(int state);
+        void displayGameOver(sf::RenderWindow& window, int winner);
+        void displayGameNew(sf::RenderWindow& window);
 
         gamePaddle* playerPaddle;
         gamePaddle* aiPaddle;
@@ -35,6 +40,8 @@ class gamePlayer
 
         int playerScore = 0;
         int enemyScore = 0;
+
+        int gameState = 0;
 
 };
 

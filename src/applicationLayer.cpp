@@ -13,7 +13,6 @@
 #include <math.h>
 
 #include <iostream>
-//! DO I NEED DESTRUCTORS AND IF SO, WHERE?
 
 int main(int argc, char** argv)
 {
