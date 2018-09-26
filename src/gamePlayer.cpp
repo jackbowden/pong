@@ -22,19 +22,75 @@ void gamePlayer::paintScore(sf::RenderWindow& window)
         // error...
     }
 
-    sf::Text text;
-    text.setFont(font);
-    text.setString("0");
+    sf::Text displayPlayerScore;
+    displayPlayerScore.setFont(font);
+    displayPlayerScore.setString("0");
     switch(playerScore)
     {
-        case 1: text.setString("1");
+        case 1: displayPlayerScore.setString("1");
+        break;
+        case 2: displayPlayerScore.setString("2");
+        break;
+        case 3: displayPlayerScore.setString("3");
+        break;
+        case 4: displayPlayerScore.setString("4");
+        break;
+        case 5: displayPlayerScore.setString("5");
+        break;
+        case 6: displayPlayerScore.setString("6");
+        break;
+        case 7: displayPlayerScore.setString("7");
+        break;
+        case 8: displayPlayerScore.setString("8");
+        break;
+        case 9: displayPlayerScore.setString("9");
+        break;
+        case 10: displayPlayerScore.setString("10");
+        break;
+        case 11: displayPlayerScore.setString("11");
+        break;
     }
-    text.setCharacterSize(24);
-    text.setPosition(600,300);
-    text.setFillColor(sf::Color::Red);
-    text.setStyle(sf::Text::Bold);
+    displayPlayerScore.setCharacterSize(24);
+    displayPlayerScore.setPosition(600,300);
+    displayPlayerScore.setFillColor(sf::Color::Green);
+    displayPlayerScore.setStyle(sf::Text::Bold);
 
-    window.draw(text);
+    window.draw(displayPlayerScore);
+
+    sf::Text displayEnemyScore;
+    displayEnemyScore.setFont(font);
+    displayEnemyScore.setString("0");
+    switch(enemyScore)
+    {
+        case 1: displayPlayerScore.setString("1");
+        break;
+        case 2: displayPlayerScore.setString("2");
+        break;
+        case 3: displayPlayerScore.setString("3");
+        break;
+        case 4: displayPlayerScore.setString("4");
+        break;
+        case 5: displayPlayerScore.setString("5");
+        break;
+        case 6: displayPlayerScore.setString("6");
+        break;
+        case 7: displayPlayerScore.setString("7");
+        break;
+        case 8: displayPlayerScore.setString("8");
+        break;
+        case 9: displayPlayerScore.setString("9");
+        break;
+        case 10: displayPlayerScore.setString("10");
+        break;
+        case 11: displayPlayerScore.setString("11");
+        break;
+    }
+    displayEnemyScore.setCharacterSize(24);
+    displayEnemyScore.setPosition(200,300);
+    displayEnemyScore.setFillColor(sf::Color::Yellow);
+    displayEnemyScore.setStyle(sf::Text::Bold);
+
+    window.draw(displayEnemyScore);
 }
 
 void gamePlayer::setScore(int player)
