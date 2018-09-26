@@ -8,7 +8,8 @@
 
 gameLogic::gameLogic()
 {
-
+    playerScore = 0;
+    enemyScore = 0;
 }
 
 
@@ -47,13 +48,13 @@ int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
     int gameWidth = 800;
     if (playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() < 0.f)
     {
-        playerScore += 1;
+        enemyScore += 1;
         playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
         playerWindow ->theGameBall->resetBall();
     }
     if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > 800) //800 = game width
     {
-        enemyScore += 1;
+        playerScore += 1;
         playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
         playerWindow ->theGameBall->resetBall();
     }
@@ -72,3 +73,14 @@ int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
         playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, gameHeight - playerWindow->theGameBall->objectBall.getRadius() - 0.1f);
     }
 }
+
+int gameLogic::getPlayerScore()
+{
+    return playerScore;
+}
+
+int gameLogic::getEnemyScore()
+{
+    return enemyScore;
+}
+

@@ -12,10 +12,12 @@ class gamePlayer
         sf::RenderWindow playerWindow;
         gamePlayer();
         void updateView();
+        void drawScore();
 
         gamePaddle* playerPaddle;
         gamePaddle* aiPaddle;
         gameBall* theGameBall;
+
 
 
     protected:

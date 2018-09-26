@@ -2,6 +2,8 @@
 #include "gamePlayer.h"
 #include "gamePaddle.h"
 #include "gameBall.h"
+#include "gameLogic.h"
+#include <iostream>
 
 gamePlayer::gamePlayer() : playerWindow(sf::VideoMode(800,600,32), "Pong, by Jack Bowden", sf::Style::Close) //width by height
 {

@@ -4,10 +4,9 @@
 //#include "menuStart.h"
 #include "gameLogic.h"
 #include "gamePlayer.h"
-//#include "gameAI.h"
+#include "gameAI.h"
 #include "gameBall.h"
 #include "gamePaddle.h"
-
 //#include "menuFinish.h"
 
 #include <cmath>
@@ -20,13 +19,10 @@ int main(int argc, char** argv)
 {
 
     gamePlayer* playerWindow = new gamePlayer();
+    gameAI* aiOperation = new gameAI();
     gameLogic* gameOperation = new gameLogic();
 
-
     playerWindow -> playerWindow.display();
-    playerWindow -> playerWindow.setFramerateLimit(60);
-
-
 
     while(playerWindow -> playerWindow.isOpen())
     {
@@ -40,20 +36,24 @@ int main(int argc, char** argv)
             }
 
         }
-
         sf::Clock clock;
-        float delta = clock.restart().asSeconds() * 40;
-        //clock.restart();
+        float delta = clock.getElapsedTime().asSeconds() * 100000;
+        clock.restart();
 
-        gameOperation -> moveBall(playerWindow, delta);
+        playerWindow -> theGameBall -> moveBall(delta);
+        gameOperation -> checkWallBoundaries(playerWindow);
+        gameOperation -> checkPaddleBoundaries(playerWindow);
+        gameOperation -> d
+
+        aiOperation -> movePaddle(playerWindow, delta);
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
-            playerWindow -> playerPaddle -> movePaddleUp();
+            playerWindow -> playerPaddle -> movePaddleUp(delta);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
-            playerWindow -> playerPaddle -> movePaddleDown();
+            playerWindow -> playerPaddle -> movePaddleDown(delta);
         }
 
         playerWindow -> updateView();

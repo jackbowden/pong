@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 {
 
     gamePlayer* playerWindow = new gamePlayer();
-    gameAI* aiOperation= new gameAI();
+    gameAI* aiOperation = new gameAI();
     gameLogic* gameOperation = new gameLogic();
 
     playerWindow -> playerWindow.display();

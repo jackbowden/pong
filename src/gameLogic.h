@@ -9,12 +9,14 @@ class gameLogic
         gameLogic();
         void checkPaddleBoundaries(gamePlayer* playerWindow);
         int checkWallBoundaries(gamePlayer* playerWindow);
+        int getPlayerScore();
+        int getEnemyScore();
 
     protected:
 
     private:
-        int playerScore = 0;
-        int enemyScore = 0;
+        int playerScore;
+        int enemyScore;
 };
 
 #endif // GAMELOGIC_H

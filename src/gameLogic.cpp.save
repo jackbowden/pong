@@ -1,28 +1,79 @@
 #include "gameLogic.h"
 #include "gamePlayer.h"
-#include <cmath>
 #include <math.h>
+#include <cmath>
+#include <iostream>
+#define M_PI 3.14159265358979323846264338327
+
 
 gameLogic::gameLogic()
 {
-    //ctor
+
 }
 
-void gameLogic::moveBall(gamePlayer* playerWindow, float delta)
+
+void gameLogic::checkPaddleBoundaries(gamePlayer* playerWindow)
 {
-    float ballAngle = 0.f;
-    do
+    if (playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() < playerWindow->aiPaddle->Paddle.getPosition().x + playerWindow->aiPaddle->Paddle.getSize().x / 2 &&
+        playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() > playerWindow->aiPaddle->Paddle.getPosition().x &&
+        playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() >= playerWindow->aiPaddle->Paddle.getPosition().y - playerWindow->aiPaddle->Paddle.getSize().y / 2 &&
+        playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() <= playerWindow->aiPaddle->Paddle.getPosition().y + playerWindow->aiPaddle->Paddle.getSize().y / 2)
     {
-        // Make sure the ball initial angle is not too much vertical
-        ballAngle = (std::rand() % 360) * 2 * M_PI / 360;
+        if (playerWindow->theGameBall->objectBall.getPosition().y > playerWindow->aiPaddle->Paddle.getPosition().y)
+            playerWindow->theGameBall->setBallAngle(M_PI - playerWindow->theGameBall->getBallAngle() + (std::rand() % 20) * M_PI / 180);
+        else
+            playerWindow->theGameBall->setBallAngle(M_PI - playerWindow->theGameBall->getBallAngle() - (std::rand() % 20) * M_PI / 180);
+
+        playerWindow->theGameBall->objectBall.setPosition(playerWindow->aiPaddle->Paddle.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() + playerWindow->aiPaddle->Paddle.getSize().x / 2 + 0.1f, playerWindow->theGameBall->objectBall.getPosition().y);
     }
-    while (std::abs(std::cos(ballAngle)) < 0.7f);
-    float ballSpeed = 40000.f;
-    //float factor = ballSpeed * delta;
-    //playerWindow->theGameBall->objectBall.move(std::cos(ballAngle) * factor, std::sin(ballAngle) * factor);
 
+    if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > playerWindow->playerPaddle->Paddle.getPosition().x - playerWindow->playerPaddle->Paddle.getSize().x / 2 &&
+        playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() < playerWindow->playerPaddle->Paddle.getPosition().x &&
+        playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() >= playerWindow->playerPaddle->Paddle.getPosition().y - playerWindow->aiPaddle->Paddle.getSize().y / 2 &&
+        playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() <= playerWindow->playerPaddle->Paddle.getPosition().y + playerWindow->aiPaddle->Paddle.getSize().y / 2)
+    {
+        if (playerWindow->theGameBall->objectBall.getPosition().y > playerWindow->playerPaddle->Paddle.getPosition().y)
+            playerWindow->theGameBall->setBallAngle(M_PI - playerWindow->theGameBall->getBallAngle() + (std::rand() % 20) * M_PI / 180);
+        else
+            playerWindow->theGameBall->setBallAngle(M_PI - playerWindow->theGameBall->getBallAngle() - (std::rand() % 20) * M_PI / 180);
 
-    //sf::Clock clock;
-    //float deltaa = clock.getElapsedTime().asSeconds();
-    playerWindow->theGameBall->objectBall.move(delta * ballSpeed * std::cos(ballAngle), delta * ballSpeed * std::sin(ballAngle));
+        playerWindow->theGameBall->objectBall.setPosition(playerWindow->playerPaddle->Paddle.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() - playerWindow->aiPaddle->Paddle.getSize().x / 2 - 0.1f, playerWindow->theGameBall->objectBall.getPosition().y);
+    }
+}
+
+int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
+{
+    int gameHeight = 600;
+    int gameWidth = 800;
+    if (playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() < 0.f)
+    {
+        playerScore += 1;
+        playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
+        playerWindow ->theGameBall->resetBall();
+    }
+    if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > 800) //800 = game width
+    {
+        enemyScore += 1;
+        playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
+        playerWindow ->theGameBall->resetBall();
+    }
+    if (playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() < 0.f) //if it hits the top
+    {
+        std::cout << playerWindow->theGameBall->getBallAngle() << std::endl;
+        playerWindow->theGameBall->invertBallAngle();
+        playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + 0.10 * (std::rand() % 5 + -5));
+        playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, playerWindow->theGameBall->objectBall.getRadius() + 0.1f);
+        std::cout << playerWindow->theGameBall->getBallAngle() << std::endl;
+    }
+    if (playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() > gameHeight) //if it hits the bottom
+    {
+        playerWindow->theGameBall->invertBallAngle();
+        playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + 0.10 * (std::rand() % 5 + -5));
+        playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, gameHeight - playerWindow->theGameBall->objectBall.getRadius() - 0.1f);
+    }
+}
+
+void gameLogic::getPlayerScore()
+{
+    return playerScore
 }
