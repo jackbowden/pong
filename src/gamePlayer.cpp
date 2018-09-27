@@ -10,8 +10,8 @@ gamePlayer::gamePlayer() : playerWindow(sf::VideoMode(800,600,32), "Pong, by Jac
     playerPaddle = new gamePaddle(playerLocX, playerLocY, "Green");
     aiPaddle = new gamePaddle(aiLocX, aiLocY, "Yellow");
     theGameBall = new gameBall(ballLocX, ballLocY, ballOriginX, ballOriginY);
-    playerScore = 10;
-    enemyScore = 10;
+    playerScore = 0;
+    enemyScore = 0;
     gameState = 0;
 }
 

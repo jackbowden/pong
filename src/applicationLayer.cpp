@@ -1,13 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
-//#include "menuStart.h"
 #include "gameLogic.h"
 #include "gamePlayer.h"
 #include "gameAI.h"
 #include "gameBall.h"
 #include "gamePaddle.h"
-//#include "menuFinish.h"
 
 #include <cmath>
 #include <math.h>
