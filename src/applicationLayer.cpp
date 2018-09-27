@@ -42,6 +42,9 @@ int main(int argc, char** argv)
 
         aiOperation -> movePaddle(playerWindow, delta);
 
+        playerWindow->acceptInput(playerWindow, delta);
+
+        /*
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
             playerWindow -> playerPaddle -> movePaddleUp(delta);
@@ -50,9 +53,25 @@ int main(int argc, char** argv)
         {
             playerWindow -> playerPaddle -> movePaddleDown(delta);
         }
+        if (playerWindow->getFunnyMode())
+        {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            {
+                playerWindow -> playerPaddle -> movePaddleLeft(delta);
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            {
+                playerWindow -> playerPaddle -> movePaddleRight(delta);
+            }
+        }
+        */
 
         playerWindow -> updateView();
     };
+
+    delete aiOperation;
+    delete playerWindow;
+    delete gameOperation;
 
   // Done.
   return 0;

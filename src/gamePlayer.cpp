@@ -15,6 +15,25 @@ gamePlayer::gamePlayer() : playerWindow(sf::VideoMode(800,600,32), "Pong, by Jac
     gameState = 0;
 }
 
+void gamePlayer::paintFunnyMode(sf::RenderWindow& window)
+{
+    sf::Font font;
+    if (!font.loadFromFile("src/sansation.ttf"))
+    {
+        // error...
+    }
+
+    sf::Text displayFunnyModeText;
+    displayFunnyModeText.setFont(font);
+    displayFunnyModeText.setString("!%$# this! I do what I want!");
+    displayFunnyModeText.setCharacterSize(24);
+    displayFunnyModeText.setPosition(100,100);
+    displayFunnyModeText.setFillColor(sf::Color::Yellow);
+    displayFunnyModeText.setStyle(sf::Text::Bold | sf::Text::Italic);
+
+    window.draw(displayFunnyModeText);
+}
+
 void gamePlayer::paintScore(sf::RenderWindow& window)
 {
     sf::Font font;
@@ -96,6 +115,9 @@ void gamePlayer::paintScore(sf::RenderWindow& window)
 
 void gamePlayer::displayGameOver(sf::RenderWindow& window, int winner)
 {
+
+    theGameBall->resetBall(); //reset the ball non-stop to ensure the game no longer goes on
+
     sf::Font font;
     if (!font.loadFromFile("src/sansation.ttf"))
     {
@@ -108,14 +130,32 @@ void gamePlayer::displayGameOver(sf::RenderWindow& window, int winner)
     gameOverScreenText.setFont(font);
     if (winner == 1)
     {
-        gameOverScreenText.setString("Game Over!\nThe player won!\nPress up arrow to play again\nPress ESC to exit.");
+        gameOverScreenText.setString("Game Over!\nThe player won!\nPress E to enable \"Bad Sport\" Mode\nPress ESC to exit.");
     } else {
-        gameOverScreenText.setString("Game Over!\nThe AI won!\nPress up arrow to play again\nPress ESC to exit.");
+        gameOverScreenText.setString("Game Over!\nThe AI won!\nPress E to enable \"Bad Sport\" Mode\nPress ESC to exit.");
     }
     gameOverScreenText.setCharacterSize(24);
-    gameOverScreenText.setPosition(400,300);
+    gameOverScreenText.setPosition(300,300);
     gameOverScreenText.setFillColor(sf::Color::White);
     gameOverScreenText.setStyle(sf::Text::Bold);
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    {
+        playerScore = 0;
+        enemyScore = 0;
+        setGameState(1);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+        playerWindow.close();
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+    {
+        funnyMode = true;
+        playerScore = 0;
+        enemyScore = 0;
+        setGameState(1);
+    }
 
     window.draw(gameOverScreenText);
     playerWindow.display();
@@ -134,15 +174,34 @@ void gamePlayer::displayGameNew(sf::RenderWindow& window)
 
     sf::Text gameOverScreenText;
     gameOverScreenText.setFont(font);
-    gameOverScreenText.setString("Welcome!\nPress up arrow to play\nPress ESC to exit.");
+    gameOverScreenText.setString("Welcome!\nPress up arrow to play normal\nPress E to enable \"Bad Sport\" Mode\nPress ESC to exit.");
     gameOverScreenText.setCharacterSize(24);
-    gameOverScreenText.setPosition(400,300);
+    gameOverScreenText.setPosition(300,300);
     gameOverScreenText.setFillColor(sf::Color::White);
     gameOverScreenText.setStyle(sf::Text::Bold);
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    {
+        setGameState(1);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+        playerWindow.close();
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+    {
+        funnyMode = true;
+        setGameState(1);
+    }
 
     window.draw(gameOverScreenText);
     playerWindow.display();
 
+}
+
+int gamePlayer::getFunnyMode()
+{
+    return funnyMode;
 }
 
 int gamePlayer::setGameState(int state)
@@ -180,6 +239,32 @@ void gamePlayer::setScore(int player)
     }
 }
 
+void gamePlayer::acceptInput(gamePlayer* playerWindow, float delta)
+{
+    if (gameState == 1)
+    {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        {
+            playerWindow -> playerPaddle -> movePaddleUp(delta);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {
+            playerWindow -> playerPaddle -> movePaddleDown(delta);
+        }
+        if (playerWindow->getFunnyMode())
+        {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            {
+                playerWindow -> playerPaddle -> movePaddleLeft(delta);
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            {
+                playerWindow -> playerPaddle -> movePaddleRight(delta);
+            }
+        }
+    }
+}
+
 void gamePlayer::updateView()
 {
     playerWindow.clear(sf::Color::Black);
@@ -193,39 +278,23 @@ void gamePlayer::updateView()
         } else if (enemyScore == 11) {
             displayGameOver(playerWindow, 0);
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        {
-            setGameState(1);
-            playerScore = 0;
-            enemyScore = 0;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-        {
-            playerWindow.close();
-        }
     }
 
     else if (isGameNew() == true)
     {
         displayGameNew(playerWindow);
-        {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-            {
-                setGameState(1);
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-            {
-                playerWindow.close();
-            }
-        }
     }
-
     else
     {
         playerPaddle -> updateView(playerWindow);
         aiPaddle -> updateView(playerWindow);
         theGameBall -> updateView(playerWindow);
         paintScore(playerWindow);
+
+        if (getFunnyMode() == true)
+        {
+            paintFunnyMode(playerWindow);
+        }
 
         playerWindow.display();
     }

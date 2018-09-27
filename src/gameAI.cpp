@@ -9,10 +9,11 @@ gameAI::gameAI()
 
 void gameAI::movePaddle(gamePlayer* playerWindow, float delta)
 {
+
     if (playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() > playerWindow->aiPaddle->Paddle.getPosition().y + playerWindow->aiPaddle->Paddle.getSize().y / 2)
-        paddleSpeed = setSpeed/2;
+        paddleSpeed = setSpeed;
     else if (playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() < playerWindow->aiPaddle->Paddle.getPosition().y - playerWindow->aiPaddle->Paddle.getSize().y / 2)
-        paddleSpeed = -setSpeed/2;
+        paddleSpeed = -setSpeed;
     else
         paddleSpeed = 0.f;
 
@@ -20,6 +21,11 @@ void gameAI::movePaddle(gamePlayer* playerWindow, float delta)
     if (((paddleSpeed < 0.f) && (playerWindow->aiPaddle->Paddle.getPosition().y - playerWindow->aiPaddle->Paddle.getSize().y / 2 > 5.f)) ||
         ((paddleSpeed > 0.f) && (playerWindow->aiPaddle->Paddle.getPosition().y + playerWindow->aiPaddle->Paddle.getSize().y / 2 < gameHeight - 5.f)))
     {
-        playerWindow->aiPaddle->Paddle.move(0, paddleSpeed/2 * delta/8);
+        if (playerWindow->getFunnyMode() == true)
+        {
+            playerWindow->aiPaddle->Paddle.move(abs(paddleSpeed/32), paddleSpeed * delta/8);
+        } else {
+            playerWindow->aiPaddle->Paddle.move(0, paddleSpeed * delta/8);
+        }
     }
 }

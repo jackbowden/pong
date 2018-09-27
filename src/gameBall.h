@@ -29,6 +29,7 @@ class gameBall
         float ballAngle = 0.785;
         float ballSpeed = 10.f;
         float ballRadius = 7;
+        float ballSpeedOverGameTime;
 };
 
 #endif // GAMEBALL_H

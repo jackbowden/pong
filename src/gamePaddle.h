@@ -13,6 +13,8 @@ class gamePaddle
         void updateView(sf::RenderWindow& window);
         void movePaddleUp(float delta);
         void movePaddleDown(float delta);
+        void movePaddleLeft(float delta);
+        void movePaddleRight(float delta);
 
         sf::RectangleShape Paddle;
 

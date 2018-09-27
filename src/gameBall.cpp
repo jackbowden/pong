@@ -42,7 +42,8 @@ float gameBall::setBallAngle(float newBallAngle)
 
 void gameBall::moveBall(float delta)
 {
-    objectBall.move(delta * ballSpeed * std::cos(ballAngle), delta * ballSpeed * std::sin(ballAngle));
+    float ballSpeedOverGameTime = delta * ballSpeed;
+    objectBall.move(ballSpeedOverGameTime * std::cos(ballAngle), ballSpeedOverGameTime * std::sin(ballAngle));
 }
 
 void gameBall::spawnBall()

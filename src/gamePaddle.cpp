@@ -45,3 +45,20 @@ void gamePaddle::movePaddleDown(float delta)
         Paddle.move(0,delta * 10);
     }
 }
+
+void gamePaddle::movePaddleLeft(float delta)
+{
+    if (Paddle.getPosition().x < 50)
+    {
+        Paddle.move(delta * 10,0);
+    }
+}
+
+
+void gamePaddle::movePaddleRight(float delta)
+{
+    if (Paddle.getPosition().x < 750)
+    {
+        Paddle.move(delta * 10, 0);
+    }
+}

@@ -46,31 +46,39 @@ int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
 {
     int gameHeight = 600;
     int gameWidth = 800;
-    if (playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() < 0.f)
+    if (playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() < 0.f) //if its past enemy goal line
     {
         playerScore += 1;
         playerWindow ->setScore(1);
         playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
         playerWindow ->theGameBall->resetBall();
     }
-    if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > 800) //800 = game width
+    if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > 800) //if its past player goal line
     {
         enemyScore += 1;
         playerWindow ->setScore(2);
         playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
         playerWindow ->theGameBall->resetBall();
     }
-    if (playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() < 0.f) //if it hits the top
+    if (playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() < 0.f) //if it hits the bottom
     {
         playerWindow->theGameBall->invertBallAngle();
         playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + 0.10 * (std::rand() % 5 + -5));
         playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, playerWindow->theGameBall->objectBall.getRadius() + 0.1f);
     }
-    if (playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() > gameHeight) //if it hits the bottom
+    if (playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() > gameHeight) //if it hits the top
     {
         playerWindow->theGameBall->invertBallAngle();
         playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + 0.10 * (std::rand() % 5 + -5));
         playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, gameHeight - playerWindow->theGameBall->objectBall.getRadius() - 0.1f);
+    }
+
+    if (playerWindow->getFunnyMode() == true)
+    {
+        if ((playerWindow->aiPaddle->Paddle.getPosition().x > playerWindow->theGameBall->objectBall.getPosition().x + 1) || (playerWindow->aiPaddle->Paddle.getPosition().x < 0) || (playerWindow->aiPaddle->Paddle.getPosition().x > 800)) //if its past player goal line
+        {
+            playerWindow->aiPaddle->Paddle.setPosition(75, playerWindow->theGameBall->objectBall.getPosition().y);
+        }
     }
 }
 

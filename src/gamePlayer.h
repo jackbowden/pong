@@ -18,6 +18,9 @@ class gamePlayer
         int setGameState(int state);
         void displayGameOver(sf::RenderWindow& window, int winner);
         void displayGameNew(sf::RenderWindow& window);
+        int getFunnyMode();
+        void paintFunnyMode(sf::RenderWindow& window);
+        void acceptInput(gamePlayer* playerWindow, float delta);
 
         gamePaddle* playerPaddle;
         gamePaddle* aiPaddle;
@@ -42,6 +45,7 @@ class gamePlayer
         int enemyScore = 0;
 
         int gameState = 0;
+        int funnyMode = false;
 
 };
 

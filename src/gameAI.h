@@ -12,7 +12,7 @@ class gameAI
     protected:
 
     private:
-        float setSpeed = 200.f;
+        float setSpeed = 50.f;
         float paddleSpeed = 0.f;
         float gameHeight = 800;
 };
