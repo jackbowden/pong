@@ -16,6 +16,14 @@ int main(int argc, char** argv)
     gameLogic* gameOperation = new gameLogic();
     gamePlayer* playerWindow = new gamePlayer();
 
+    sf::Texture texture;
+    texture.loadFromFile("assets/wmcypher.jpg");
+    sf::Sprite sprite;
+    sf::Vector2u size = texture.getSize();
+    sprite.setTexture(texture);
+    sprite.setOrigin(sf::Vector2f(size.x / 2, size.y / 2));
+    sprite.setPosition(sf::Vector2f(size.x / 2, size.y / 2));
+
 
     playerWindow -> playerWindow.display();
 
@@ -42,6 +50,8 @@ int main(int argc, char** argv)
 
         aiOperation -> movePaddle(playerWindow, delta);
         playerWindow->acceptInput(playerWindow, delta);
+
+        playerWindow->playerWindow.draw(sprite);
 
         playerWindow -> updateView();
 

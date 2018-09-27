@@ -28,8 +28,11 @@ void gameLogic::checkPaddleBoundaries(gamePlayer* playerWindow)
             playerWindow->theGameBall->setBallAngle(M_PI - playerWindow->theGameBall->getBallAngle() - (std::rand() % 20) * M_PI / 180);
 
         playerWindow->theGameBall->objectBall.setPosition(playerWindow->aiPaddle->Paddle.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() + playerWindow->aiPaddle->Paddle.getSize().x / 2 + 0.1f, playerWindow->theGameBall->objectBall.getPosition().y);
-        ballSound.setBuffer(ballSoundBuffer);
-        ballSound.play();
+        if ((playerWindow->isGameNew() != true) && (playerWindow->isGameOver() != true))
+        {
+            ballSound.setBuffer(ballSoundBuffer);
+            ballSound.play();
+        }
     }
 
     if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > playerWindow->playerPaddle->Paddle.getPosition().x - playerWindow->playerPaddle->Paddle.getSize().x / 2 &&
@@ -43,8 +46,11 @@ void gameLogic::checkPaddleBoundaries(gamePlayer* playerWindow)
             playerWindow->theGameBall->setBallAngle(M_PI - playerWindow->theGameBall->getBallAngle() - (std::rand() % 20) * M_PI / 180);
 
         playerWindow->theGameBall->objectBall.setPosition(playerWindow->playerPaddle->Paddle.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() - playerWindow->aiPaddle->Paddle.getSize().x / 2 - 0.1f, playerWindow->theGameBall->objectBall.getPosition().y);
-        ballSound.setBuffer(ballSoundBuffer);
-        ballSound.play();
+        if ((playerWindow->isGameNew() != true) && (playerWindow->isGameOver() != true))
+        {
+            ballSound.setBuffer(ballSoundBuffer);
+            ballSound.play();
+        }
     }
 }
 
@@ -55,8 +61,11 @@ int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
         playerScore += 1;
         playerWindow ->setScore(1);
         playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
-        wooshSound.setBuffer(wooshSoundBuffer);
-        wooshSound.play();
+        if ((playerWindow->isGameNew() != true) && (playerWindow->isGameOver() != true))
+        {
+            wooshSound.setBuffer(wooshSoundBuffer);
+            wooshSound.play();
+        }
         playerWindow ->theGameBall->resetBall();
     }
     if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > 800) //if its past player goal line
@@ -64,8 +73,11 @@ int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
         enemyScore += 1;
         playerWindow ->setScore(2);
         playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
-        wooshSound.setBuffer(wooshSoundBuffer);
-        wooshSound.play();
+        if ((playerWindow->isGameNew() != true) && (playerWindow->isGameOver() != true))
+        {
+            wooshSound.setBuffer(wooshSoundBuffer);
+            wooshSound.play();
+        }
         playerWindow ->theGameBall->resetBall();
     }
     if (playerWindow->theGameBall->objectBall.getPosition().y - playerWindow->theGameBall->objectBall.getRadius() < 0.f) //if it hits the bottom
@@ -73,16 +85,22 @@ int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
         playerWindow->theGameBall->invertBallAngle();
         playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + 0.10 * (std::rand() % 5 + -5));
         playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, playerWindow->theGameBall->objectBall.getRadius() + 0.1f);
-        ballSound.setBuffer(ballSoundBuffer);
-        ballSound.play();
+        if ((playerWindow->isGameNew() != true) && (playerWindow->isGameOver() != true))
+        {
+            ballSound.setBuffer(ballSoundBuffer);
+            ballSound.play();
+        }
     }
     if (playerWindow->theGameBall->objectBall.getPosition().y + playerWindow->theGameBall->objectBall.getRadius() > gameHeight) //if it hits the top
     {
         playerWindow->theGameBall->invertBallAngle();
         playerWindow->theGameBall->setBallAngle(playerWindow->theGameBall->getBallAngle() + 0.10 * (std::rand() % 5 + -5));
         playerWindow->theGameBall->objectBall.setPosition(playerWindow->theGameBall->objectBall.getPosition().x, gameHeight - playerWindow->theGameBall->objectBall.getRadius() - 0.1f);
-        ballSound.setBuffer(ballSoundBuffer);
-        ballSound.play();
+        if ((playerWindow->isGameNew() != true) && (playerWindow->isGameOver() != true))
+        {
+            ballSound.setBuffer(ballSoundBuffer);
+            ballSound.play();
+        }
     }
 
     if (playerWindow->getFunnyMode() == true)

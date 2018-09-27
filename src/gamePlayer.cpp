@@ -161,6 +161,8 @@ void gamePlayer::displayGameOver(sf::RenderWindow& window, int winner)
 
 void gamePlayer::displayGameNew(sf::RenderWindow& window)
 {
+    theGameBall->resetBall(); //reset the ball non-stop to ensure the game doesn't start without me
+
     sf::Font font;
     if (!font.loadFromFile("assets/sansation.ttf"))
     {
@@ -248,23 +250,16 @@ void gamePlayer::acceptInput(gamePlayer* playerWindow, float delta)
         {
             playerWindow -> playerPaddle -> movePaddleDown(delta);
         }
-        if (playerWindow->getFunnyMode())
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            {
-                playerWindow -> playerPaddle -> movePaddleLeft(delta);
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            {
-                playerWindow -> playerPaddle -> movePaddleRight(delta);
-            }
+            setGameState(2);
         }
     }
 }
 
 void gamePlayer::updateView()
 {
-    playerWindow.clear(sf::Color::Black);
+    //playerWindow.clear(sf::Color::Black);
 
 
     if (isGameOver() == true)
