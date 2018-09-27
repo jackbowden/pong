@@ -16,6 +16,8 @@ int main(int argc, char** argv)
     gameLogic* gameOperation = new gameLogic();
     gamePlayer* playerWindow = new gamePlayer();
 
+    int itsLost = 0;
+
     sf::Texture texture;
     texture.loadFromFile("assets/wmcypher.jpg");
     sf::Sprite sprite;
@@ -34,7 +36,6 @@ int main(int argc, char** argv)
                 playerWindow -> playerWindow.close();
                 return 0;
             }
-
         }
 
         sf::Clock clock;
@@ -51,7 +52,6 @@ int main(int argc, char** argv)
         playerWindow->playerWindow.draw(sprite);
 
         playerWindow -> updateView();
-
     };
 
     delete aiOperation;

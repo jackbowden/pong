@@ -8,6 +8,7 @@ gamePlayer::gamePlayer() : playerWindow(sf::VideoMode(800,600,32), "Pong, by Jac
     playerPaddle = new gamePaddle(725, 600, "Green");
     aiPaddle = new gamePaddle(75, 600, "Yellow");
     theGameBall = new gameBall(400, 300, 7/2, 7/2);
+
 }
 
 void gamePlayer::paintFunnyMode(sf::RenderWindow& window)
@@ -260,6 +261,11 @@ void gamePlayer::acceptInput(gamePlayer* playerWindow, float delta)
 
 void gamePlayer::updateView()
 {
+    if(!playerWindow.hasFocus())
+    {
+        sf::sleep(sf::seconds(1));
+    }
+
     if (isGameOver() == true)
     {
         if (playerScore == 11)
