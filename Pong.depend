@@ -30,10 +30,9 @@
 1538027485 c:\users\jabowden\desktop\gamedesign\pong\src\gameai.h
 	"gamePlayer.h"
 
-1538028763 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameai.cpp
+1538038681 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameai.cpp
 	"gameAI.h"
 	"gamePlayer.h"
-	<SFML/System.hpp>
 
 1538028638 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameball.cpp
 	"gameBall.h"
@@ -47,12 +46,12 @@
 	<cmath>
 	<iostream>
 
-1538029436 source:c:\users\jabowden\desktop\gamedesign\pong\src\gamepaddle.cpp
+1538038545 source:c:\users\jabowden\desktop\gamedesign\pong\src\gamepaddle.cpp
 	"gamePaddle.h"
 	<string>
 	<SFML/Graphics.hpp>
 
-1538038280 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameplayer.cpp
+1538038819 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameplayer.cpp
 	<SFML/Graphics.hpp>
 	"gamePlayer.h"
 	"gamePaddle.h"

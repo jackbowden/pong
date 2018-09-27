@@ -128,8 +128,10 @@ void gamePlayer::displayGameOver(sf::RenderWindow& window, int winner)
     if (winner == 1)
     {
         gameOverScreenText.setString("Game Over!\nThe player won!\nPress E to enable \"Bad Sport\" Mode\nPress ESC to exit.");
-    } else {
+    } else if (winner == 0) {
         gameOverScreenText.setString("Game Over!\nThe AI won!\nPress E to enable \"Bad Sport\" Mode\nPress ESC to exit.");
+    } else {
+        gameOverScreenText.setString("Game Ended!\nPress E to enable \"Bad Sport\" Mode\nPress ESC to exit.");
     }
     gameOverScreenText.setCharacterSize(24);
     gameOverScreenText.setPosition(300,300);
@@ -250,7 +252,7 @@ void gamePlayer::acceptInput(gamePlayer* playerWindow, float delta)
         {
             playerWindow -> playerPaddle -> movePaddleDown(delta);
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
         {
             setGameState(2);
         }
@@ -259,9 +261,6 @@ void gamePlayer::acceptInput(gamePlayer* playerWindow, float delta)
 
 void gamePlayer::updateView()
 {
-    //playerWindow.clear(sf::Color::Black);
-
-
     if (isGameOver() == true)
     {
         if (playerScore == 11)
@@ -269,6 +268,8 @@ void gamePlayer::updateView()
             displayGameOver(playerWindow, 1);
         } else if (enemyScore == 11) {
             displayGameOver(playerWindow, 0);
+        } else if ((enemyScore != 11) && (playerScore != 11)) {
+            displayGameOver(playerWindow, 2);
         }
     } else if (isGameNew() == true)
     {
@@ -288,6 +289,4 @@ void gamePlayer::updateView()
 
         playerWindow.display();
     }
-
-
 }

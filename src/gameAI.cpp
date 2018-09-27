@@ -1,6 +1,5 @@
 #include "gameAI.h"
 #include "gamePlayer.h"
-#include <SFML/System.hpp>
 
 gameAI::gameAI()
 {
