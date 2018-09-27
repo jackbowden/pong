@@ -22,8 +22,6 @@ class gameLogic
         sf::Sound ballSound;
         sf::Sound wooshSound;
 
-        int playerScore = 0;
-        int enemyScore = 0;
         int gameHeight = 600;
         int gameWidth = 800;
 };

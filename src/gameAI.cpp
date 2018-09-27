@@ -6,6 +6,7 @@ gameAI::gameAI()
     //ctor
 }
 
+//! Inspired by SFML/examples/pong
 void gameAI::movePaddle(gamePlayer* playerWindow, float delta)
 {
 

@@ -7,7 +7,6 @@
 class gamePaddle
 {
     public:
-        gamePaddle();
         gamePaddle(float x, float y, std::string color);
 
         void updateView(sf::RenderWindow& window);

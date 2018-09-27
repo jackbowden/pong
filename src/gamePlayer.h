@@ -1,10 +1,10 @@
 #ifndef GAMEPLAYER_H
 #define GAMEPLAYER_H
+#include "gamePlayer.h"
 #include "gamePaddle.h"
 #include "gameBall.h"
 
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 
 class gamePlayer
 {
@@ -30,18 +30,6 @@ class gamePlayer
     protected:
 
     private:
-        float playerLocX = 725;
-        float playerLocY = 600;
-
-        float aiLocX = 75;
-        float aiLocY = 600;
-
-        float ballLocX = 400;
-        float ballLocY = 300;
-
-        float ballOriginX = 7 / 2;
-        float ballOriginY = 7 / 2;
-
         int playerScore = 0;
         int enemyScore = 0;
 

@@ -1,15 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include "gamePlayer.h"
-#include "gamePaddle.h"
-#include "gameBall.h"
 #include <iostream>
 #include <string>
 
 gamePlayer::gamePlayer() : playerWindow(sf::VideoMode(800,600,32), "Pong, by Jack Bowden", sf::Style::Close) //width by height
 {
-    playerPaddle = new gamePaddle(playerLocX, playerLocY, "Green");
-    aiPaddle = new gamePaddle(aiLocX, aiLocY, "Yellow");
-    theGameBall = new gameBall(ballLocX, ballLocY, ballOriginX, ballOriginY);
+    playerPaddle = new gamePaddle(725, 600, "Green");
+    aiPaddle = new gamePaddle(75, 600, "Yellow");
+    theGameBall = new gameBall(400, 300, 7/2, 7/2);
 }
 
 void gamePlayer::paintFunnyMode(sf::RenderWindow& window)
@@ -42,6 +40,7 @@ void gamePlayer::paintScore(sf::RenderWindow& window)
     sf::Text displayPlayerScore;
     displayPlayerScore.setFont(font);
     displayPlayerScore.setString("0");
+    //!std::cout << playerScore;
     switch(playerScore)
     {
         case 1: displayPlayerScore.setString("1");
@@ -235,7 +234,7 @@ void gamePlayer::setScore(int player)
     if (player == 1)
     {
         playerScore++;
-    } else {
+    } else if (player == 2) {
         enemyScore++;
     }
 }

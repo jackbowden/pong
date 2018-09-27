@@ -14,7 +14,7 @@ gameLogic::gameLogic()
     wooshSound.setVolume(100);
 }
 
-
+//! Inspired by SFML/examples/pong
 void gameLogic::checkPaddleBoundaries(gamePlayer* playerWindow)
 {
     if (playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() < playerWindow->aiPaddle->Paddle.getPosition().x + playerWindow->aiPaddle->Paddle.getSize().x / 2 &&
@@ -54,11 +54,11 @@ void gameLogic::checkPaddleBoundaries(gamePlayer* playerWindow)
     }
 }
 
+//! Inspired by SFML/examples/pong
 int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
 {
     if (playerWindow->theGameBall->objectBall.getPosition().x - playerWindow->theGameBall->objectBall.getRadius() < 0.f) //if its past enemy goal line
     {
-        playerScore += 1;
         playerWindow ->setScore(1);
         playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
         if ((playerWindow->isGameNew() != true) && (playerWindow->isGameOver() != true))
@@ -70,7 +70,6 @@ int gameLogic::checkWallBoundaries(gamePlayer* playerWindow)
     }
     if (playerWindow->theGameBall->objectBall.getPosition().x + playerWindow->theGameBall->objectBall.getRadius() > 800) //if its past player goal line
     {
-        enemyScore += 1;
         playerWindow ->setScore(2);
         playerWindow->theGameBall->setBallAngle((std::rand() % 360) * 2 * M_PI / 360);
         if ((playerWindow->isGameNew() != true) && (playerWindow->isGameOver() != true))

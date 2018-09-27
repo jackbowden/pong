@@ -24,9 +24,6 @@ int main(int argc, char** argv)
     sprite.setOrigin(sf::Vector2f(size.x / 2, size.y / 2));
     sprite.setPosition(sf::Vector2f(size.x / 2, size.y / 2));
 
-
-    playerWindow -> playerWindow.display();
-
     while(playerWindow -> playerWindow.isOpen())
     {
         sf::Event Event;
@@ -42,7 +39,7 @@ int main(int argc, char** argv)
 
         sf::Clock clock;
         float delta = clock.getElapsedTime().asSeconds() * 100000;
-        clock.restart(); //! do i need this?
+        clock.restart();
 
         playerWindow -> theGameBall -> moveBall(delta);
         gameOperation -> checkWallBoundaries(playerWindow);

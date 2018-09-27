@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1538038090 source:c:\users\jabowden\desktop\gamedesign\pong\src\applicationlayer.cpp
+1538040464 source:c:\users\jabowden\desktop\gamedesign\pong\src\applicationlayer.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<SFML/System.hpp>
@@ -10,52 +10,50 @@
 	"gamePaddle.h"
 	<iostream>
 
-1538036536 c:\users\jabowden\desktop\gamedesign\pong\src\gamelogic.h
+1538040495 c:\users\jabowden\desktop\gamedesign\pong\src\gamelogic.h
 	<SFML/Audio.hpp>
 	"gamePlayer.h"
 
-1538034451 c:\users\jabowden\desktop\gamedesign\pong\src\gameplayer.h
+1538040206 c:\users\jabowden\desktop\gamedesign\pong\src\gameplayer.h
+	"gamePlayer.h"
 	"gamePaddle.h"
 	"gameBall.h"
 	<SFML/Graphics.hpp>
-	<SFML/Audio.hpp>
 
-1538038548 c:\users\jabowden\desktop\gamedesign\pong\src\gamepaddle.h
+1538040800 c:\users\jabowden\desktop\gamedesign\pong\src\gamepaddle.h
 	<SFML/Graphics.hpp>
 	<string>
 
-1538028292 c:\users\jabowden\desktop\gamedesign\pong\src\gameball.h
+1538040733 c:\users\jabowden\desktop\gamedesign\pong\src\gameball.h
 	<SFML/Graphics.hpp>
 
 1538027485 c:\users\jabowden\desktop\gamedesign\pong\src\gameai.h
 	"gamePlayer.h"
 
-1538038681 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameai.cpp
+1538039747 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameai.cpp
 	"gameAI.h"
 	"gamePlayer.h"
 
-1538028638 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameball.cpp
+1538040656 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameball.cpp
 	"gameBall.h"
 	<cmath>
 	<math.h>
 
-1538038492 source:c:\users\jabowden\desktop\gamedesign\pong\src\gamelogic.cpp
+1538040494 source:c:\users\jabowden\desktop\gamedesign\pong\src\gamelogic.cpp
 	"gameLogic.h"
 	"gamePlayer.h"
 	<math.h>
 	<cmath>
 	<iostream>
 
-1538038545 source:c:\users\jabowden\desktop\gamedesign\pong\src\gamepaddle.cpp
+1538040859 source:c:\users\jabowden\desktop\gamedesign\pong\src\gamepaddle.cpp
 	"gamePaddle.h"
 	<string>
 	<SFML/Graphics.hpp>
 
-1538038819 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameplayer.cpp
+1538040618 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameplayer.cpp
 	<SFML/Graphics.hpp>
 	"gamePlayer.h"
-	"gamePaddle.h"
-	"gameBall.h"
 	<iostream>
 	<string>
 

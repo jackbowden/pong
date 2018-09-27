@@ -6,7 +6,6 @@
 class gameBall
 {
     public:
-        gameBall();
         gameBall(float posX, float posY, float originX, float originY);
 
         sf::CircleShape objectBall;
@@ -27,7 +26,7 @@ class gameBall
         float originX = 400;
         float originY = 300;
         float ballAngle = 0.785;
-        float ballSpeed = 10.f;
+        float ballSpeed = 10;
         float ballRadius = 7;
         float ballSpeedOverGameTime;
 };
