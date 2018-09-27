@@ -10,17 +10,14 @@ gamePlayer::gamePlayer() : playerWindow(sf::VideoMode(800,600,32), "Pong, by Jac
     playerPaddle = new gamePaddle(playerLocX, playerLocY, "Green");
     aiPaddle = new gamePaddle(aiLocX, aiLocY, "Yellow");
     theGameBall = new gameBall(ballLocX, ballLocY, ballOriginX, ballOriginY);
-    playerScore = 0;
-    enemyScore = 0;
-    gameState = 0;
 }
 
 void gamePlayer::paintFunnyMode(sf::RenderWindow& window)
 {
     sf::Font font;
-    if (!font.loadFromFile("src/sansation.ttf"))
+    if (!font.loadFromFile("assets/sansation.ttf"))
     {
-        // error...
+        std::cout << "Error loading font in paintFunnyMode" << std::endl;
     }
 
     sf::Text displayFunnyModeText;
@@ -37,9 +34,9 @@ void gamePlayer::paintFunnyMode(sf::RenderWindow& window)
 void gamePlayer::paintScore(sf::RenderWindow& window)
 {
     sf::Font font;
-    if (!font.loadFromFile("src/sansation.ttf"))
+    if (!font.loadFromFile("assets/sansation.ttf"))
     {
-        // error...
+        std::cout << "Error loading font in paintScore" << std::endl;
     }
 
     sf::Text displayPlayerScore;
@@ -119,9 +116,9 @@ void gamePlayer::displayGameOver(sf::RenderWindow& window, int winner)
     theGameBall->resetBall(); //reset the ball non-stop to ensure the game no longer goes on
 
     sf::Font font;
-    if (!font.loadFromFile("src/sansation.ttf"))
+    if (!font.loadFromFile("assets/sansation.ttf"))
     {
-        // error...
+        std::cout << "Error loading font in displayGameOver" << std::endl;
     }
 
     playerWindow.clear(sf::Color::Black);
@@ -165,9 +162,9 @@ void gamePlayer::displayGameOver(sf::RenderWindow& window, int winner)
 void gamePlayer::displayGameNew(sf::RenderWindow& window)
 {
     sf::Font font;
-    if (!font.loadFromFile("src/sansation.ttf"))
+    if (!font.loadFromFile("assets/sansation.ttf"))
     {
-        // THROW ERROR
+        std::cout << "Error loading font in displayNewGame" << std::endl;
     }
 
     playerWindow.clear(sf::Color::Black);
@@ -241,7 +238,7 @@ void gamePlayer::setScore(int player)
 
 void gamePlayer::acceptInput(gamePlayer* playerWindow, float delta)
 {
-    if (gameState == 1)
+    if (gameState == 1) //we cover input needs at all the other menu screens
     {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
@@ -278,9 +275,7 @@ void gamePlayer::updateView()
         } else if (enemyScore == 11) {
             displayGameOver(playerWindow, 0);
         }
-    }
-
-    else if (isGameNew() == true)
+    } else if (isGameNew() == true)
     {
         displayGameNew(playerWindow);
     }

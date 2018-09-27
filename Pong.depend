@@ -1,23 +1,24 @@
 # depslib dependency file v1.0
-1538031059 source:c:\users\jabowden\desktop\gamedesign\pong\src\applicationlayer.cpp
+1538035159 source:c:\users\jabowden\desktop\gamedesign\pong\src\applicationlayer.cpp
 	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
 	<SFML/System.hpp>
 	"gameLogic.h"
 	"gamePlayer.h"
 	"gameAI.h"
 	"gameBall.h"
 	"gamePaddle.h"
-	<cmath>
-	<math.h>
 	<iostream>
 
-1537998767 c:\users\jabowden\desktop\gamedesign\pong\src\gamelogic.h
+1538036536 c:\users\jabowden\desktop\gamedesign\pong\src\gamelogic.h
+	<SFML/Audio.hpp>
 	"gamePlayer.h"
 
-1538031094 c:\users\jabowden\desktop\gamedesign\pong\src\gameplayer.h
+1538034451 c:\users\jabowden\desktop\gamedesign\pong\src\gameplayer.h
 	"gamePaddle.h"
 	"gameBall.h"
 	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
 
 1538029349 c:\users\jabowden\desktop\gamedesign\pong\src\gamepaddle.h
 	<SFML/Graphics.hpp>
@@ -39,7 +40,7 @@
 	<cmath>
 	<math.h>
 
-1538030711 source:c:\users\jabowden\desktop\gamedesign\pong\src\gamelogic.cpp
+1538035030 source:c:\users\jabowden\desktop\gamedesign\pong\src\gamelogic.cpp
 	"gameLogic.h"
 	"gamePlayer.h"
 	<math.h>
@@ -51,7 +52,7 @@
 	<string>
 	<SFML/Graphics.hpp>
 
-1538031163 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameplayer.cpp
+1538034074 source:c:\users\jabowden\desktop\gamedesign\pong\src\gameplayer.cpp
 	<SFML/Graphics.hpp>
 	"gamePlayer.h"
 	"gamePaddle.h"

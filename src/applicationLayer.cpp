@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
 
 #include "gameLogic.h"
@@ -7,9 +8,6 @@
 #include "gameBall.h"
 #include "gamePaddle.h"
 
-#include <cmath>
-#include <math.h>
-
 #include <iostream>
 
 int main(int argc, char** argv)
@@ -17,6 +15,7 @@ int main(int argc, char** argv)
     gameAI* aiOperation = new gameAI();
     gameLogic* gameOperation = new gameLogic();
     gamePlayer* playerWindow = new gamePlayer();
+
 
     playerWindow -> playerWindow.display();
 
@@ -32,41 +31,20 @@ int main(int argc, char** argv)
             }
 
         }
+
         sf::Clock clock;
         float delta = clock.getElapsedTime().asSeconds() * 100000;
-        clock.restart();
+        clock.restart(); //! do i need this?
 
         playerWindow -> theGameBall -> moveBall(delta);
         gameOperation -> checkWallBoundaries(playerWindow);
         gameOperation -> checkPaddleBoundaries(playerWindow);
 
         aiOperation -> movePaddle(playerWindow, delta);
-
         playerWindow->acceptInput(playerWindow, delta);
 
-        /*
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        {
-            playerWindow -> playerPaddle -> movePaddleUp(delta);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        {
-            playerWindow -> playerPaddle -> movePaddleDown(delta);
-        }
-        if (playerWindow->getFunnyMode())
-        {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            {
-                playerWindow -> playerPaddle -> movePaddleLeft(delta);
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            {
-                playerWindow -> playerPaddle -> movePaddleRight(delta);
-            }
-        }
-        */
-
         playerWindow -> updateView();
+
     };
 
     delete aiOperation;
