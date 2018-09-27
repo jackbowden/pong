@@ -185,7 +185,7 @@ void gamePlayer::updateView()
     playerWindow.clear(sf::Color::Black);
 
 
-    while (isGameOver() == true)
+    if (isGameOver() == true)
     {
         if (playerScore == 11)
         {
@@ -205,7 +205,7 @@ void gamePlayer::updateView()
         }
     }
 
-    while (isGameNew() == true)
+    else if (isGameNew() == true)
     {
         displayGameNew(playerWindow);
         {
@@ -220,10 +220,15 @@ void gamePlayer::updateView()
         }
     }
 
-    playerPaddle -> updateView(playerWindow);
-    aiPaddle -> updateView(playerWindow);
-    theGameBall -> updateView(playerWindow);
-    paintScore(playerWindow);
+    else
+    {
+        playerPaddle -> updateView(playerWindow);
+        aiPaddle -> updateView(playerWindow);
+        theGameBall -> updateView(playerWindow);
+        paintScore(playerWindow);
 
-    playerWindow.display();
+        playerWindow.display();
+    }
+
+
 }
