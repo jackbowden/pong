@@ -127,11 +127,11 @@ void gamePlayer::displayGameOver(sf::RenderWindow& window, int winner)
     gameOverScreenText.setFont(font);
     if (winner == 1)
     {
-        gameOverScreenText.setString("Game Over!\nThe player won!\nPress E to enable \"Bad Sport\" Mode\nPress ESC to exit.");
+        gameOverScreenText.setString("Game Over!\nThe player won!\nPress up arrow to play normal\nPress E to play \"Bad Sport\" Mode\nPress ESC to exit.");
     } else if (winner == 0) {
-        gameOverScreenText.setString("Game Over!\nThe AI won!\nPress E to enable \"Bad Sport\" Mode\nPress ESC to exit.");
+        gameOverScreenText.setString("Game Over!\nThe AI won!\nPress up arrow to play normal\nPress E to play \"Bad Sport\" Mode\nPress ESC to exit.");
     } else {
-        gameOverScreenText.setString("Game Ended!\nPress E to enable \"Bad Sport\" Mode\nPress ESC to exit.");
+        gameOverScreenText.setString("Game Ended!\nPress up arrow to play normal\nPress E to play \"Bad Sport\" Mode\nPress ESC to exit.");
     }
     gameOverScreenText.setCharacterSize(24);
     gameOverScreenText.setPosition(300,300);
