@@ -23,9 +23,9 @@ void gameAI::movePaddle(gamePlayer* playerWindow, float delta)
     {
         if (playerWindow->getFunnyMode() == true)
         {
-            playerWindow->aiPaddle->Paddle.move(abs(paddleSpeed/32), paddleSpeed * delta/8);
+            playerWindow->aiPaddle->Paddle.move(abs(paddleSpeed/32), paddleSpeed * delta);
         } else {
-            playerWindow->aiPaddle->Paddle.move(0, paddleSpeed * delta/8);
+            playerWindow->aiPaddle->Paddle.move(0, paddleSpeed * delta);
         }
     }
 }

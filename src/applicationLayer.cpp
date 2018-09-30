@@ -25,6 +25,7 @@ int main(int argc, char** argv)
     sprite.setTexture(texture);
     sprite.setOrigin(sf::Vector2f(size.x / 2, size.y / 2));
     sprite.setPosition(sf::Vector2f(size.x / 2, size.y / 2));
+    sf::Clock clock;
 
     while(playerWindow -> playerWindow.isOpen())
     {
@@ -38,8 +39,8 @@ int main(int argc, char** argv)
             }
         }
 
-        sf::Clock clock;
-        float delta = clock.getElapsedTime().asSeconds() * 100000;
+
+        float delta = clock.getElapsedTime().asSeconds();// * 100000;
         clock.restart();
 
         playerWindow -> theGameBall -> moveBall(delta);

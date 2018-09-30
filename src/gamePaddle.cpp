@@ -34,7 +34,7 @@ void gamePaddle::movePaddleUp(float delta)
 {
     if (Paddle.getPosition().y > 50)
     {
-        Paddle.move(0, delta * -10);
+        Paddle.move(0, delta * -250);
     }
 }
 
@@ -42,6 +42,6 @@ void gamePaddle::movePaddleDown(float delta)
 {
     if (Paddle.getPosition().y < 550)
     {
-        Paddle.move(0,delta * 10);
+        Paddle.move(0,delta * 250);
     }
 }
