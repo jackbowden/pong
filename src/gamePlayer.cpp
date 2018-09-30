@@ -140,6 +140,7 @@ void gamePlayer::displayGameOver(sf::RenderWindow& window, int winner)
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
+        funnyMode = false;
         playerScore = 0;
         enemyScore = 0;
         setGameState(1);
